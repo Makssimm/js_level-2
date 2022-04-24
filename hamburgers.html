@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <header class="mainheader">
+        <div class="container">
+            cобери свой гамбургер!
+        </div>
+    </header>
+    <div class="choose sizeChoose">
+      <div class="container">
+        <h2 class="sizeChooseHeader">шаг 1: выберите размер</h2>
+        <div class="button-block">
+            <button data-price ="100" data-calories="20" data-size="большой">Большой</button>
+        <button data-price ="50" data-calories="40" data-size="маленький">Маленький</button> 
+        </div>
+      </div>
+    </div>
+
+    <div class="choose stuffChoose">
+        <div class="container">
+            <h2 class="stuffChooseHeader">шаг 2: выберите наполнитель</h2>
+        <div class="button-block button-block-big">
+            <button disabled="true" data-price ="10" data-calories="20" data-stuff="с сыром">С сыром</button>
+        <button disabled="true" data-price ="20" data-calories="5" data-stuff="с салатом" >С салатом</button>
+        <button disabled="true" data-price ="15" data-calories="10" data-stuff="с картофелем">С картофелем</button>
+        </div>
+        </div>
+    </div>
+
+    <div class="choose addTopping">
+        <div class="container">
+            <h2 class="addToppingHeader">шаг 3: хотите что-нибудь добавить?</h2>
+       <div class="button-block button-block-big">
+        <button disabled="true" data-price ="15" data-calories="0" data-topping="и приправой" >Приправа</button>
+        <button disabled="true" data-price ="20" data-calories="5" data-topping="и майонезом">Майонез</button>
+        <button disabled="true" data-price ="0" data-calories="0" data-topping="">Нет, спасибо</button>
+       </div>
+        </div>
+    </div>
+    <div class="lastblock">
+        <div class="container">
+            <div class="result">
+            </div>
+            <div class="indexes">
+                <div class="totalPrice"></div>
+                <div class="totalCalories"></div>
+            </div>
+        </div>
+    </div>
+    <div class="finalButtons">
+        <div class="container center">
+           <div class="button-block">
+            <button>оплатить</button>
+            <button class="reset">отменить</button>
+           </div>
+        </div>
+    </div>
+    <footer></footer>
+    <script>
+        'use strict'
+        
+        let price;
+        let caloriesQuantity;
+
+       const sizeChooseEl = document.querySelector('.sizeChoose');
+       const sizeChooseBtn = sizeChooseEl.querySelectorAll('button');
+       const stuffChooseEl = document.querySelector('.stuffChoose');
+       const stuffChooseBtn = stuffChooseEl.querySelectorAll('button');
+       const addToppingEl = document.querySelector('.addTopping');
+       const addToppingBtn = addToppingEl.querySelectorAll('button');
+       const resultEl = document.querySelector('.result');
+       const totalPriceEl = document.querySelector('.totalPrice');
+       const totalCaloriesEl = document.querySelector('.totalCalories');
+       const sizeChooseHr = document.querySelector('.sizeChooseHeader');
+       const stuffChooseHr = document.querySelector('.stuffChooseHeader');
+       const addToppingHr = document.querySelector('.addToppingHeader');
+       const finalButtonsEl = document.querySelector('.finalButtons');
+       const resetBtn = document.querySelector('.reset');
+       
+
+
+        class Hamburger{
+            
+            /**считает цену и калорийность исходя из размера, 
+              активирует следующий элемент выбора и деактивирует текущий
+              */
+            getSize(){
+                price = +event.target.dataset.price;
+                caloriesQuantity = +event.target.dataset.calories;
+                this.size = event.target.dataset.size;
+                sizeChooseBtn.forEach( el => el.setAttribute('disabled', true));
+                stuffChooseBtn.forEach( el => el.removeAttribute('disabled'));
+                sizeChooseHr.style.visibility = 'hidden';
+                stuffChooseHr.style.visibility = 'visible';
+            }
+            
+             /**считает цену и калорийность исходя из наполнителя, 
+              активирует следующий элемент выбора и деактивирует текущий
+              */
+            getStuff(){
+                price +=  +event.target.dataset.price;
+                caloriesQuantity += +event.target.dataset.calories;
+                this.stuff = event.target.dataset.stuff;
+                stuffChooseBtn.forEach( el => el.setAttribute('disabled', true));
+                addToppingBtn.forEach( el => el.removeAttribute('disabled'));
+                stuffChooseHr.style.visibility = 'hidden';
+                addToppingHr.style.visibility = 'visible';
+            }
+
+             /**считает цену и калорийность исходя из выбранной добавки, деактивирует текущий элемент управления, выводит информацию о сделанном выборе, активирует кнопки подтверждения либо отмены заказа
+              */
+            getToppings(){
+                price +=  +event.target.dataset.price;
+                caloriesQuantity += +event.target.dataset.calories;
+                this.topping = event.target.dataset.topping;
+                resultEl.textContent = (`ваш выбор: ${this.size} гамбургер ${this.stuff} ${this.topping}`);
+                totalPriceEl.textContent = (`цена: ${price} руб`);
+                totalCaloriesEl.textContent = (`калорийность: ${caloriesQuantity}кал`);
+                addToppingBtn.forEach( el => el.setAttribute('disabled', true));
+                addToppingHr.style.visibility = 'hidden';
+                finalButtonsEl.style.visibility = 'visible';
+            }
+
+             /**сбрасывает на ноль все счетчики и возвращает на первый шаг выбора
+              */
+            reset(){
+                price = 0;
+                caloriesQuantity = 0;
+                resultEl.textContent = (``);
+                totalPriceEl.textContent = (``);
+                totalCaloriesEl.textContent = (``);
+                sizeChooseBtn.forEach( el => el.removeAttribute('disabled'));
+                finalButtonsEl.style.visibility = 'hidden';
+                sizeChooseHr.style.visibility = 'visible';
+            }
+        }
+
+        const ham = new Hamburger;
+        sizeChooseEl.addEventListener('click', event => {
+            if (event.target.tagName !== 'BUTTON'){
+                return
+            }
+            ham.getSize(event);
+        });
+        stuffChooseEl.addEventListener('click', event => {
+            if (event.target.tagName !== 'BUTTON'){
+                return
+            }
+            ham.getStuff(event);
+        });
+        addToppingEl.addEventListener('click', event => {
+            if (event.target.tagName !== 'BUTTON'){
+                return
+            }
+            ham.getToppings(event);
+        });
+        resetBtn.addEventListener('click', () => {
+            ham.reset()
+        });
+
+    </script>
+</body>
+</html>
