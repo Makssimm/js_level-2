@@ -1,0 +1,81 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.container{
+    max-width: 1140px;
+    margin: 0 auto;
+}
+
+.mainheader{
+    background-color: #1ee93d;
+    height: 14.28vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    color: rgba(86, 47, 3, 0.963);
+    text-transform: uppercase;
+    font-weight: bold;
+    
+}
+button{
+    height: 60px;
+    width: 160px;
+    text-transform: uppercase;
+}
+.sizeChoose{
+    background-color: #fff;
+}
+.choose{
+    display: flex;
+    justify-content: center;
+    height: 14.28vh;
+}
+.button-block{
+    display: flex;
+    justify-content: space-around;
+    width: 400px;
+}
+.button-block-big{
+    width: 600px;
+}
+.lastblock{
+    
+}
+.result{
+    height: 4.28vh;
+    text-align: center;
+    font-size: 30px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.indexes{
+    display: flex;
+    justify-content: space-between;
+    width: 750px;
+    height: 14.28vh;
+    font-size: 30px;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin: 0 auto;
+}
+.center{
+    display: flex;
+    justify-content: center;
+}
+h2{
+    text-align: center;
+    margin: 10px 0;
+}
+.stuffChooseHeader, .addToppingHeader{
+    visibility: hidden;
+}
+.finalButtons{
+    visibility: hidden;
+    margin-bottom: 40px;
+}
+footer{
+    height: 14.28vh;
+    background-color: rgb(174, 168, 129);
+}
