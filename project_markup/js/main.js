@@ -67,13 +67,13 @@ const app = new Vue({
                     this.$data.filtered.push(item);
                 }
             });
-        /*this.getJson(`getProducts.json`)
+        this.getJson(`getProducts.json`)
             .then(data => {
                 for(let item of data){
                     this.$data.products.push(item);
                     this.$data.filtered.push(item);
                 }
-            })*/
+            })
     }
 
 });
