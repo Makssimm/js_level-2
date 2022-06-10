@@ -1,20 +1,13 @@
 [
     {
         "quantity": 1,
-        "id_product": 17,
-        "product_name": "khaki shirt",
-        "img_product": "img/card12.jpg",
-        "price": 37
-    },
-    {
-        "quantity": 18,
         "id_product": 13,
         "product_name": "hat",
         "img_product": "img/card3.jpg",
         "price": 5
     },
     {
-        "quantity": 8,
+        "quantity": 1,
         "id_product": 12,
         "product_name": "red shirt",
         "img_product": "img/card7.jpg",

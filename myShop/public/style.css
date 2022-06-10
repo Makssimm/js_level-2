@@ -753,6 +753,9 @@ details {
   flex-direction: column;
   justify-content: center;
 }
+.product-title {
+  text-transform: uppercase;
+}
 
 .carousel {
   height: 776px;

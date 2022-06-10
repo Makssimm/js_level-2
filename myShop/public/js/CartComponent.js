@@ -15,7 +15,7 @@ Vue.component('cart-item', {
                 <div class="cart__dropdown_product-container">
                 <img :src=cartItem.img_product alt="Some img">
                 <div class="cart__dropdown_product-desc">
-                <div class="product-title">{{ cartItem.name }}</div>
+                <div class="product-title">{{ cartItem.product_name }}</div>
                 <div class="product-quantity">Quantity: {{ cartItem.quantity }}</div>
                 <div class="product-single-price">$ {{ cartItem.price }}</div>
                  </div>

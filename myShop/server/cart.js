@@ -7,8 +7,14 @@ let change = (cart, req) => {
     find.quantity += req.body.quantity;
     return JSON.stringify(cart, null, 4);
 };
+let remove = (cart, req) => {
+    let find = cart.find(el => +el.id_product === req.body.id_product);
+    cart.splice(cart.indexOf(find), 1);
+    return JSON.stringify(cart, null, 4);
+};
 
 module.exports = {
     add,
-    change
+    change,
+    remove
 };

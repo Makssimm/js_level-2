@@ -36,8 +36,8 @@ const app = new Vue({
             })
                 .then(result => result.json())
                 .catch(error => {
-                    // console.log(error)
-                    this.$refs.error.text = error;
+                    console.log(error)
+                    // this.$refs.error.text = error;
                 })
         },
         putJson(url, data){
@@ -50,10 +50,28 @@ const app = new Vue({
             })
                 .then(result => result.json())
                 .catch(error => {
-                    // console.log(error)
-                    this.$refs.error.text = error;
+                    console.log(error)
+                    // this.$refs.error.text = error;
                 })
         },
+
+        delJson(url, data) {
+            return fetch(url, {
+                    method: 'DELETE',
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(data)
+                })
+                .then(result => result.json())
+                // .catch(error => this.$refs.error.setText(error))
+                .catch(error => {
+                    console.log(error)
+                    // this.$refs.error.text = error;
+                })
+        },
+
+
             addProduct(item){
                 let find = this.cartItems.find(el => el.id_product === item.id_product);
                 this.counter++;
@@ -74,19 +92,30 @@ const app = new Vue({
                         })
                 }   
             },
-            remove(item){
+            
+            remove(product) {
                 this.counter--;
-                this.getJson(`${API}/addToBasket.json`)
-                    .then(data => {
-                        if (data.result === 1) {
-                            if(item.quantity>1){
-                                item.quantity--;
-                            } else {
-                                this.cartItems.splice(this.cartItems.indexOf(item), 1);
+                if (product.quantity > 1) {
+                    this.putJson(`/api/cart/${product.id_product}`, { quantity: -1 })
+                        .then(data => {
+                            if (data.result) {
+                                product.quantity--;
                             }
-                        }
-                    })
+                        })
+                } else {
+                    this.delJson(`/api/cart/${product.id_product}`, product)
+                        .then(data => {
+                            if (data.result) {
+                                this.cartItems.splice(this.cartItems.indexOf(product), 1);
+                            } else {
+                                console.log('error');
+                            }
+                        })
+                }
             }
+
+
+
         },
         
     mounted(){
