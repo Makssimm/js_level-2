@@ -1,0 +1,16 @@
+[
+    {
+        "quantity": 1,
+        "id_product": 13,
+        "product_name": "hat",
+        "img_product": "img/card3.jpg",
+        "price": 5
+    },
+    {
+        "quantity": 1,
+        "id_product": 12,
+        "product_name": "red shirt",
+        "img_product": "img/card7.jpg",
+        "price": 12
+    }
+]

@@ -1,0 +1,56 @@
+[
+  {
+    "id_product": 11,
+    "product_name": "blue anorak",
+    "img_product": "img/card1.jpg",
+    "price": 75
+  },
+  {
+    "id_product": 12,
+    "product_name": "red shirt",
+    "img_product": "img/card7.jpg",
+    "price": 12
+  },
+  {
+      "id_product": 13,
+      "product_name": "hat",
+      "img_product": "img/card3.jpg",
+      "price": 5
+    },
+    {
+      "id_product": 14,
+      "product_name": "blue t-shirt",
+      "img_product": "img/card4.jpg",
+      "price": 10
+    },
+    {
+      "id_product": 15,
+      "product_name": "white t-shirt",
+      "img_product": "img/card8.jpg",
+      "price": 6
+    },
+    {
+      "id_product": 16,
+      "product_name": "cap",
+      "img_product": "img/card9.jpg",
+      "price": 3
+    },
+    {
+      "id_product": 17,
+      "product_name": "white shirt",
+      "img_product": "img/card10.jpg",
+      "price": 35
+    },
+    {
+      "id_product": 17,
+      "product_name": "leather anorak",
+      "img_product": "img/card11.jpg",
+      "price": 350
+    },
+    {
+      "id_product": 17,
+      "product_name": "khaki shirt",
+      "img_product": "img/card12.jpg",
+      "price": 37
+    }
+]
